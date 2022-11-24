@@ -1,0 +1,30 @@
+.container-md
+{
+    background-color: #617ca1;
+}
+
+li
+{
+    padding: 10px;
+    margin: 10px;
+    background-color: #d1eaebd1;
+    border: solid #457b9d 3px;
+    border-radius: 10px;
+}
+
+.display-5
+{
+    color: white;
+    text-shadow: 1px 1px 3px #a8dadc;
+}
+
+.truncate-line-clamp 
+{
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical; 
+    width: 250px;
+    overflow: hidden;
+}
+  
+
