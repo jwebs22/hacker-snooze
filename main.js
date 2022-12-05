@@ -1,7 +1,7 @@
  
 let parent = document.querySelector("#items");
 let child = document.createElement("li");
-let commentButton = document.createElement("button");
+//let commentButton = document.createElement("button");
 
 let storyRequest = async() =>
 {
@@ -15,6 +15,8 @@ let storyRequest = async() =>
         let response2 = await fetch(`https://hacker-news.firebaseio.com/v0/item/${story}.json`);
         let data2 = await response2.json();
 
+        //console.log(data2);
+
         child = document.createElement("li");
         let li = parent.appendChild(child);
         
@@ -27,60 +29,36 @@ let storyRequest = async() =>
         url.href = data2.url; 
 
         //create comment button
-        commentButton = document.createElement("button");
-        commentButton.classList.add("btn", "btn-outline-primary");
-        commentButton.innerText = "Click for Comment Preview"
+        // commentButton = document.createElement("button");
+        // commentButton.classList.add("btn", "btn-outline-primary");
+        // commentButton.innerText = "Click for Comment Preview"
 
         //add click function to show comments
-        commentButton.addEventListener("click", function()
-        {
-            let para = document.createElement("p");
-            para.classList.add("truncate-line-clamp")
-            li.appendChild(para);
-            para.innerHTML = `${commentData.text}`;
+        // commentButton.addEventListener("click", function()
+        // {
+        //     let para = document.createElement("p");
+        //     para.classList.add("truncate-line-clamp")
+            
+        //     li.appendChild(para);
+        //     para.innerHTML = `${commentData.text}`;
 
-            commentButton.addEventListener("click", function()
-            {
-                li.removeChild(para);
-            })
-        })
+        // })
        
         //comments
-        //get comment urls
-        for (let n = 0; n < 3; n++)
-        {
-            let comment = data2.kids[n]
-            let commentResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${comment}.json`)
-            let commentData = await commentResponse.json();
-
-            console.log(commentData);
-
-            // let urlComments = document.createElement("a");
-            // let urlTextComments = document.createTextNode(data2.kids);
-
-            // urlComments.appendChild(urlText);
-            // urlComments.kids = data2.kids;
-            // urlComments.href = data2.urlComments;       
-            // console.log(urlTextComments);
-        }
         //gets first comment
-        let comment = data2.kids[0]
-        let commentResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${comment}.json`)
-        let commentData = await commentResponse.json();
+        //console.log(data2.kids);
+        // let comment = data2.kids[0]
+        // let commentResponse = await fetch(`https://hacker-news.firebaseio.com/v0/item/${comment}.json`)
+        // let commentData = await commentResponse.json();
 
-        //link to comments:
-        // let urlComments = document.createElement("a");
-        // let urlTextComments = document.createTextNode(data2.kids);
-
-        // urlComments.appendChild(urlText);
-        // urlComments.kids = data2.kids;
-        // urlComments.href = data2.urlComments;     
-        // console.log(urlTextComments);
+        
     
     
         //add text to list
         li.innerHTML = `<li class="list-group-item"> <a href="${url}" target = "_blank">${data2.title}</a> <br> Post Score: ${data2.score}, Comments: ${data2.descendants}, Author: ${data2.by}</li>`;
-        li.appendChild(commentButton);
+        //li.appendChild(commentButton);
+        
+        
         
     }
 }
